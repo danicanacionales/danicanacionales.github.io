@@ -1,0 +1,225 @@
+html, body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #20bf6b;
+}
+
+h1 {
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #778ca3;
+    border-width: 3px;
+    border-style:solid;
+    font-size: 20px;
+    font-weight: 600;
+    color: #303952;
+    outline: 0;
+    text-align: center;
+    width: 100%;
+}
+
+input[type="text"]:focus {
+    border-radius: 4px;
+    border-color: #303952;
+}
+
+
+/* index */
+.formButton {
+    background-color: #596275;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 5px solid #303952;
+    padding: 8px;
+    color: #ffffff;
+    outline: none;
+}
+
+.formButton:hover {
+    background-color: #303952;
+}
+
+.formButtonPurple {
+    background-color: #a55eea;
+    border-bottom: 5px solid #8854d0;
+}
+
+.formButtonPurple:hover {
+    background-color: #8854d0;
+}
+
+.formButtonGreen {
+    background-color: #26de81;
+    border-bottom: 5px solid #20bf6b;
+}
+
+.formButtonGreen:hover {
+    background-color: #20bf6b;
+}
+
+#alert {
+    opacity: 0;
+}
+
+#alert.incorrect {
+    opacity: 1 !important;
+    transition: 500ms ease-in;
+}
+
+/* Part 1 */
+section {
+    height: 100vh;
+}
+
+section.intro {
+    background-color: #8854d0;
+    height: calc(100vh - 10em);
+
+}
+
+section.second {
+    background-color: #3867d6;
+    height: calc(100vh - 10em);
+}
+
+section.third {
+    background-color: #0fb9b1;
+}
+
+p {
+    color: #ffffff;
+    text-align: center;
+}
+
+.stickToBottom {
+    position: absolute;
+    bottom: 10em;
+}
+
+/* part 2a */
+.container {
+    width: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
+    max-width: unset;
+}
+
+.leftPart, .rightPart {
+    height: 100vh;
+    padding: 2em;
+}
+
+.leftPart {
+    background-color: #f5cd79;
+}
+
+.rightPart {
+    background-color: #ffffff;
+}
+
+/* part 2 */
+.part2 {
+    background-color: #3867d6;
+}
+
+#gameCard {
+    height: calc(100vh - 10em);
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
+    margin: 1em;
+}
+
+#numberCircle {
+    height: 5em;
+    width: 5em;
+    background-color: #4b7bec;
+    border-radius: 50%;
+    text-align: center;
+    display: table;
+    box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
+    position: relative;
+    top: -3em;
+}
+
+#numberCircle .content {
+    display: table-cell; 
+    vertical-align: middle;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+#nameDisplay {
+    height: 5em;
+    width: 10em;
+    background-color: #4b7bec;
+    border-radius: 20%;
+    text-align: center;
+    display: table;
+    box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
+    position: relative;
+    top: -3em;
+}
+
+#nameDisplay .content {
+    display: table-cell; 
+    vertical-align: middle;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.gameButton {
+    font-weight: bold;
+    padding: 15px;
+}
+
+#gameContainer p {
+    color: #000000;
+    font-weight: 600;
+    font-size: 100%;
+
+}
+
+#startButton {
+    width: 20em;
+}
+
+.arrow {
+    position: relative;
+    margin: 0;
+    display: none;
+}
+
+.arrow button {
+    outline: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 3em;
+    position: relative;
+    color: #ffffff;
+}
+
+#controlButton {
+    outline: 0;
+    background-color: transparent;
+    border: none;
+}
+
+#control {
+    font-size: 3em;
+    color: #4b7bec;
+}
