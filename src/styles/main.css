@@ -136,15 +136,32 @@ p {
     background-color: #3867d6;
 }
 
-#gameCard {
-    height: calc(100vh - 10em);
+#gameContent, #startContent {
+    height: 90%;
     background-color: #ffffff;
     border-radius: 30px;
-    box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
-    margin: 1em;
 }
 
-#numberCircle {
+button.arrow {
+    outline: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 3em;
+    position: relative;
+    color: #ffffff;
+}
+
+.questionPanel {
+    height: 80%;
+    overflow: scroll;
+}
+
+.infoPanel {
+    margin-top: -2em;
+}
+
+.numberCircle,
+#nameDisplay {
     height: 5em;
     width: 5em;
     background-color: #4b7bec;
@@ -153,28 +170,9 @@ p {
     display: table;
     box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
     position: relative;
-    top: -3em;
 }
 
-#numberCircle .content {
-    display: table-cell; 
-    vertical-align: middle;
-    color: #ffffff;
-    font-size: 2em;
-}
-
-#nameDisplay {
-    height: 5em;
-    width: 10em;
-    background-color: #4b7bec;
-    border-radius: 20%;
-    text-align: center;
-    display: table;
-    box-shadow: 7px 10px 12px 0px rgba(0,0,0,0.23);
-    position: relative;
-    top: -3em;
-}
-
+.numberCircle .content, 
 #nameDisplay .content {
     display: table-cell; 
     vertical-align: middle;
@@ -182,44 +180,59 @@ p {
     font-size: 2em;
 }
 
-.gameButton {
-    font-weight: bold;
-    padding: 15px;
+#nameDisplay {
+    width: 10em;
+    border-radius: 30px;
 }
 
-#gameContainer p {
+.gameButton {
+    font-weight: bold;
+}
+
+.questionPanel p {
     color: #000000;
     font-weight: 600;
     font-size: 100%;
-
 }
 
 #startButton {
     width: 20em;
 }
 
-.arrow {
-    position: relative;
-    margin: 0;
-    display: none;
-}
-
-.arrow button {
-    outline: 0;
-    background-color: transparent;
-    border: none;
-    font-size: 3em;
-    position: relative;
-    color: #ffffff;
-}
-
-#controlButton {
+#videoController {
     outline: 0;
     background-color: transparent;
     border: none;
 }
 
-#control {
+#videoControllerIcon {
     font-size: 3em;
     color: #4b7bec;
+}
+
+#photo {
+    height: 100%;
+    object-fit: contain;
+}
+
+
+@media (max-width: 576px) { 
+    .gameCard {
+        height: 85%;
+        padding-top:1em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    #gameContent{
+        height: 100%;
+    }
+
+    .questionPanel {
+        height: 65%;
+        overflow: scroll;
+    }
+
+    .infoPanel {
+        margin-top: 0;
+    }
 }

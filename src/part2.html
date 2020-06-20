@@ -13,82 +13,65 @@
     <title>Hello, world!</title>
   </head>
   <body class="part2" onload="initPart2()">
-    <div class="h-100 row align-items-center">
-        <div class="col">
-            <div class="d-flex justify-content-center">
-                <div class="arrow col-lg-1 align-items-center">
-                    <div class="h-100 row align-items-center">
-                        <div class="col">
-                            <div class="flex-column justify-content-center">
-                                <div class="p-2 d-flex justify-content-center">
-                                    <button id="arrowLeft" class="p-2"><i class="fas fa-chevron-circle-left"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="h-100 row">
+        <div class="container">
+            <div class="row h-100">
+                <div class="arrowContainer col-6 col-md-2 order-5 order-md-1 d-flex justify-content-end align-items-center" style="visibility: hidden !important;">
+                    <button id="arrowLeft" class="p-2 arrow"><i class="fas fa-chevron-circle-left"></i></button>
                 </div>
-                <div id="gameCard" class="col-lg-8">
-                    <div id="startPanel" style="height: 100%">
-                        <div class="h-100 row align-items-center">
-                            <div class="col">
-                                <div class="flex-column justify-content-center">
-                                    <div class="p-2 d-flex justify-content-center">
-                                        <input type="button" id="startButton" value="START" class="formButton formButtonGreen gameButton">
-                                    </div>
+                <div class="gameCard col-12 col-md-8 order-1 d-flex flex-wrap align-items-center justify-content-center">
+
+                    <div id="gameContent" class="col-11 col-md-12 d-flex align-items-center shadow">
+                        <div class="d-flex h-100 w-100">
+                            <div id="startContainer" class="col d-flex flex-wrap justify-content-start">
+                                <div class="startPanel col-12 d-flex align-items-center justify-content-center">
+                                    <input type="button" id="startButton" value="START" class="formButton formButtonGreen gameButton">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="gamePanel" style="display: none; height:100%;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="d-flex justify-content-center">
-                                    <div id="numberCircle" style="display: none;">
+
+                            <div id="questionContainer" class="col d-flex flex-wrap justify-content-start"  style="display:none !important;">
+                                <div class="infoPanel col-12 d-flex align-items-center justify-content-center">
+                                    <div class="numberCircle">
                                         <div id="numberContent" class="content"></div>
                                     </div>
-                                    <div id="nameDisplay">
-                                        <div id="nameContent" class="content"></div>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="answerContainer" class="row" style="display: none; height: 80%;">
-                            <div class="col-lg-12 mb-5 align-self-center">
-                                <div id="videoContainer" class="d-flex justify-content-center"></div>
-                            </div>
-                            <div class="col-lg-12 d-flex align-self-end">
-                                <div class="col-lg-12 d-flex justify-content-center">
-                                    <button id="controlButton"><i id="control" class="fas"></i></button>
+                                <div id="panelQuestion" class="questionPanel col-12 d-flex align-items-center" style="display: none !important;">
+                                    <p id="question"></p>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="questionContainer" class="row" style="height: 80%;">
-                            <div id="gameContainer" class="col-lg-12 mb-5 align-self-center">
-                                <div class="d-flex justify-content-center p-5">
-                                    <p id="kwento"></p>
+                                <div id="panelPhoto" class="questionPanel col-12 d-flex justify-content-center">
+                                    <img id="photo">
                                 </div>
-                            </div>
-                            <div class="col-lg-12 d-flex align-self-end">
-                                <div class="col-lg-6">
+                                <div class="col-12 col-md-6">
                                     <input type="button" id="whoThisButton" value="Who This?" class="btn-block formButton formButtonPurple gameButton">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-12 col-md-6">
                                     <input type="button" id="iKnowButton" value="I know who it is!" class="btn-block formButton formButtonGreen gameButton">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="arrow col-lg-1">
-                    <div class="h-100 row align-items-center">
-                        <div class="col">
-                            <div class="flex-column justify-content-center">
-                                <div class="p-2 d-flex justify-content-center">
-                                    <button id="arrowRight" class="p-2"><i class="fas fa-chevron-circle-right"></i></button>
+                            <div id="answerContainer" class="col d-flex flex-wrap justify-content-start" style="display:none !important;">
+                                <div class="infoPanel col-12 d-flex align-items-center justify-content-center">
+                                    <div id="nameDisplay">
+                                        <div id="name" class="content"></div>
+                                    </div>
+                                </div>
+                                <div class="questionPanel col-12 d-flex align-items-center justify-content-center">
+                                    <video id="videoElement"></video>
+                                    <!-- <video id="videoElement" style="width:100%">
+                                        <source src="resources/videoMessages/danica.MP4" type="video/mp4">
+                                    </video> -->
+                                    <!-- <video style="height:100%">
+                                        <source src="resources/videoMessages/tim.mov">
+                                    </video> -->
+                                </div>
+                                <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <button id="videoController"><i id="videoControllerIcon" class="fas"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="arrowContainer col-6 col-md-2 order-12 d-flex justify-content-start align-items-center" style="visibility: hidden !important;">
+                    <button id="arrowRight" class="p-2 arrow"><i class="fas fa-chevron-circle-right"></i></button>
                 </div>
             </div>
         </div>
@@ -99,5 +82,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/game.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
   </body>
 </html>

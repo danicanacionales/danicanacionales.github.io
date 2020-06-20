@@ -1,27 +1,37 @@
 [
     {
-        "person": "danica",
-        "videoMessage": "danica.MP4",
-        "questionType": "kwento",
-        "question": {
-            "kwento": "kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento "
-        }
-    },
-    {
         "person": "Tim",
-        "videoMessage": "tim.MOV",
-        "questionType": "kwento",
-        "question": {
-            "kwento": "Etiam felis metus, faucibus vitae consectetur rhoncus, euismod sed libero. Suspendisse ullamcorper lacinia gravida. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque bibendum vulputate lectus, fringilla ultricies ante ornare nec."
-        }
-    },
-    {
-        "person": "Tim",
-        "videoMessage": "location-here",
         "questionType": "photo",
         "question": {
-            "photoLocation": "location-here",
+            "filename": "tim.png",
             "description": "John Mayer Concert"
+        },
+        "video": {
+            "filename": "tim.MOV",
+            "orientation": "portrait"
+        }
+    },
+    {
+        "person": "Star",
+        "questionType": "kwento",
+        "question": {
+            "kwento": "kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento kwento "
+        },
+        "video": {
+            "filename": "danica.MP4",
+            "orientation": "landscape"
+        }
+    },
+    {
+        "person": "Danica",
+        "questionType": "photo",
+        "question": {
+            "filename": "danica.png",
+            "description": "John Mayer Concert"
+        },
+        "video": {
+            "filename": "danica.MP4",
+            "orientation": "landscape"
         }
     }
 ]

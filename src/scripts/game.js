@@ -1,135 +1,135 @@
+const startContainer = document.getElementById('startContainer');
 const startButton = document.getElementById('startButton');
-const startPanel = document.getElementById('startPanel');
-
-const gamePanel = document.getElementById('gamePanel');
-const questionContainer = document.getElementById('questionContainer');
-const answerContainer = document.getElementById('answerContainer');
-const arrows = document.getElementsByClassName('arrow');
+const arrowContainers = document.getElementsByClassName('arrowContainer');
 const arrowLeft = document.getElementById('arrowLeft');
 const arrowRight = document.getElementById('arrowRight');
-const numberCircle = document.getElementById('numberCircle');
+
+const questionContainer = document.getElementById('questionContainer');
 const questionNumber = document.getElementById('numberContent');
-const nameDisplay = document.getElementById('nameDisplay');
-const nameContent = document.getElementById('nameContent');
-var kwento = document.getElementById('kwento');
+const panelQuestion = document.getElementById('panelQuestion');
+const question = document.getElementById('question');
+const panelPhoto = document.getElementById('panelPhoto');
+const photo = document.getElementById('photo');
 
 const whoThisButton = document.getElementById('whoThisButton');
 const iKnowButton = document.getElementById('iKnowButton');
 
-var videoContainer = document.getElementById('videoContainer');
-var videoNode = document.getElementById('videoNode');
-const control = document.getElementById('control');
-const controlButton = document.getElementById('controlButton');
+const answerContainer = document.getElementById('answerContainer');
+const videoElement = document.getElementById('videoElement');
+const videoController = document.getElementById('videoController');
+var videoControllerIcon = document.getElementById('videoControllerIcon');
 
-var questions;
+const name = document.getElementById('name');
 var currentQuestion;
 var index;
+var storage;
+var storageRef;
 
+function displayAnswer() {
+    questionContainer.style.setProperty('display', 'none', 'important');
+    answerContainer.style.removeProperty('display');
+
+    name.innerHTML = currentQuestion.person;
+
+    var sourceNode = document.createElement('SOURCE');
+    storageRef.child('videoMessages/' + currentQuestion.question.filename).getDownloadURL().then(function(url) {
+        sourceNode.setAttribute('src', url);
+    }).catch(function(error) {
+        // Handle any errors
+    });
+
+    videoElement.setAttribute('onended', 'switchToPlay()');
+    if(currentQuestion.video.orientation === 'landscape') {
+        videoElement.setAttribute('width', '100%');
+        videoElement.removeAttribute('height');
+    } else {
+        videoElement.setAttribute('height', '100%');
+        videoElement.removeAttribute('width');
+    }
+    videoElement.appendChild(sourceNode);
+    videoElement.play();
+    switchToPause();
+}
+
+function displayQuestion() {
+    if(index == 0) {
+        arrowContainers[0].style.visibility = 'hidden';
+    } else {
+        arrowContainers[0].style.visibility = 'visible';
+    }
+
+    if(index < questions.length - 1) {
+        arrowContainers[1].style.visibility = 'visible';
+    } else {
+        arrowContainers[1].style.visibility = 'hidden';
+    }
+    
+    videoElement.innerHTML = '';
+    switchToPlay();
+
+    answerContainer.style.setProperty('display', 'none', 'important');
+    questionContainer.style.removeProperty('display');
+
+    currentQuestion = questions[index];
+    questionNumber.innerHTML = index + 1;
+
+    if(currentQuestion.questionType == 'kwento') {
+        panelQuestion.style.removeProperty('display');
+        panelPhoto.style.setProperty('display', 'none', 'important');
+        
+        question.innerHTML = currentQuestion.question.kwento;
+    } else {
+        panelQuestion.style.setProperty('display', 'none', 'important');
+        panelPhoto.style.removeProperty('display');
+
+        // photo.setAttribute('src', 'resources/photos/' + currentQuestion.question.filename)
+
+        storageRef.child('images/' + currentQuestion.question.filename).getDownloadURL().then(function(url) {
+            photo.setAttribute('src', url);
+        }).catch(function(error) {
+            // Handle any errors
+        });
+    }
+
+    console.log(currentQuestion.question.kwento);
+}
 
 startButton.addEventListener('click', (event) => {
-    startPanel.style.display = 'none';
+    startContainer.style.setProperty('display', 'none', 'important');
+    console.log(startContainer);
 
-    arrows[0].style.display = 'block';
-    arrows[1].style.display = 'block';
-    gamePanel.style.display = 'block';
+    arrowContainers[0].style.visibility = 'visible';
+    arrowContainers[1].style.visibility = 'visible';
+    questionContainer.style.removeProperty('display');
 
     index = 0;
     displayQuestion();
 });
 
-function displayQuestion() {
-    
-    videoNode = document.getElementById('videoNode');
-    console.log(videoNode);
-    if(videoNode != null) {
-        videoContainer.innerHTML = "";
-    }
-
-    if(index == 0) {
-        arrows[0].style.visibility = 'hidden';
-    } else {
-        arrows[0].style.visibility = 'visible';
-    }
-
-    if(index < questions.length - 1) {
-        arrows[1].style.visibility = 'visible';
-    } else {
-        arrows[1].style.visibility = 'hidden';
-    }
-
-    numberCircle.style.display = 'table';
-    questionContainer.style.display = 'flex';
-    answerContainer.style.display = 'none';
-    nameDisplay.style.display = 'none';
-    
-    currentQuestion = questions[index];
-
-    questionNumber.innerHTML = index + 1;
-    kwento.innerHTML = currentQuestion.question.kwento;
-    console.log(currentQuestion.question.kwento);
-}
-
-iKnowButton.addEventListener('click', (event) => {
-    displayAnswer();
-});
-
-function displayAnswer() {
-    questionContainer.style.display = 'none';
-    numberCircle.style.display = 'none';
-    answerContainer.style.display = 'block';
-    nameDisplay.style.display = 'table';
-    nameContent.innerHTML = currentQuestion.person;
-    
-    
-
-    videoContainer.innerHTML = "";
-    videoNode = document.getElementById('videoNode');
-
-    var nodeVideo = document.createElement('VIDEO');
-    nodeVideo.classList.add('video-js');
-    nodeVideo.classList.add('vjs-default-skin');
-    nodeVideo.setAttribute('id', 'videoNode');
-    nodeVideo.setAttribute('width', '70%');
-    nodeVideo.setAttribute('type', 'video/mp4');
-    nodeVideo.setAttribute('src', 'resources/videoMessages/' + currentQuestion.videoMessage);
-    nodeVideo.setAttribute('onended', 'switchToPlay()')
-    videoContainer.appendChild(nodeVideo);
-
-    control.classList.remove('fa-play');
-    control.classList.add('fa-pause');
-
-    nodeVideo.play();
-}
-
-controlButton.addEventListener('click', (event) => {
-    videoNode = document.getElementById('videoNode');
-    if(control.classList.contains('fa-pause')) {
+videoController.addEventListener('click', (event) => {
+    if(videoControllerIcon.classList.contains('fa-pause')) {
         switchToPlay();
-        videoNode.pause();
         console.log('pause');
-    } else if (control.classList.contains('fa-play')) {
+    } else if (videoControllerIcon.classList.contains('fa-play')) {
         switchToPause();
-        videoNode.play();
         console.log('play');
     }
 });
 
 function switchToPlay() {
-    control.classList.remove('fa-pause');
-    control.classList.add('fa-play');
+    videoControllerIcon = document.getElementById('videoControllerIcon');
+    videoElement.pause();
+    videoControllerIcon.classList.remove('fa-pause');
+    videoControllerIcon.classList.add('fa-play');
 }
 
 function switchToPause() {
-    control.classList.remove('fa-play');
-    control.classList.add('fa-pause');
+    videoControllerIcon = document.getElementById('videoControllerIcon');
+    console.log(videoControllerIcon);
+    videoElement.play();
+    videoControllerIcon.classList.remove('fa-play');
+    videoControllerIcon.classList.add('fa-pause');
 }
-
-arrowRight.addEventListener('click', (event) => {
-    if(index + 1 < questions.length) {
-        index++;
-        displayQuestion();
-    }
-});
 
 arrowLeft.addEventListener('click', (event) => {
     if(index > 0) {
@@ -138,12 +138,33 @@ arrowLeft.addEventListener('click', (event) => {
     }
 });
 
+arrowRight.addEventListener('click', (event) => {
+    if(index + 1 < questions.length) {
+        index++;
+        displayQuestion();
+    }
+});
+
+whoThisButton.addEventListener('click', (event) => {
+    displayAnswer();
+});
+
+iKnowButton.addEventListener('click', (event) => {
+    displayAnswer();
+});
+
 function initPart2() {
     loadJSON(function(response) {
         questions = JSON.parse(response.toString());
 
         console.log(questions);
     });
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    storage = firebase.storage();
+    storageRef = storage.ref();
 }
 
 function loadJSON(callback) {
@@ -159,4 +180,13 @@ function loadJSON(callback) {
     xobj.send(null);
 }
 
-
+var firebaseConfig = {
+    apiKey: "AIzaSyBb1pPlPb4bWfNHP21iiBniXnppCvGyY88",
+    authDomain: "selebrasyon-11649.firebaseapp.com",
+    databaseURL: "https://selebrasyon-11649.firebaseio.com",
+    projectId: "selebrasyon-11649",
+    storageBucket: "selebrasyon-11649.appspot.com",
+    messagingSenderId: "211956830893",
+    appId: "1:211956830893:web:bc0e5bb83ff932a481ac24",
+    measurementId: "G-LF1Q8334H5"
+};
