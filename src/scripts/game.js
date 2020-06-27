@@ -179,9 +179,11 @@ startButton.addEventListener('click', (event) => {
     questionContainer.style.removeProperty('display');
     
     const storageQuestionNumber = localStorage.getItem('questionNumber');
+    const storageScore = localStorage.getItem('score');
     console.log(storageQuestionNumber);
     index = storageQuestionNumber != null && storageQuestionNumber < questions.length 
-            ? parseInt(localStorage.getItem('questionNumber')) : 0;
+            ? parseInt(storageQuestionNumber) : 0;
+    score = storageScore != null ? storageScore : 0;
 
     displayScore();
     displayQuestion();
@@ -238,6 +240,7 @@ function initPart2() {
     loadJSON(function(response) {
         questions = JSON.parse(response.toString());
         console.log(questions);
+        shuffle(questions);
     });
 
     initSounds();
@@ -247,6 +250,21 @@ function initPart2() {
 
     storage = firebase.storage();
     storageRef = storage.ref();
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while(0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 
 function loadJSON(callback) {
