@@ -1,9 +1,12 @@
+const body = document.querySelector('.part2');
 const startContainer = document.getElementById('startContainer');
 const startButton = document.getElementById('startButton');
 const arrowContainers = document.getElementsByClassName('arrowContainer');
+const arrows = document.querySelectorAll('.arrow');
 const arrowLeft = document.getElementById('arrowLeft');
 const arrowRight = document.getElementById('arrowRight');
 
+const gameContent = document.getElementById('gameContent');
 const questionContainer = document.getElementById('questionContainer');
 const questionNumber = document.getElementById('numberContent');
 const panelQuestion = document.getElementById('panelQuestion');
@@ -11,8 +14,9 @@ const question = document.getElementById('question');
 const panelPhoto = document.getElementById('panelPhoto');
 const photo = document.getElementById('photo');
 
-const whoThisButton = document.getElementById('whoThisButton');
-const iKnowButton = document.getElementById('iKnowButton');
+const choiceButton = document.querySelectorAll('.choiceButton');
+const scoreQuestionContainer = document.getElementById('scoreQuestionContainer');
+const scoreAnswerContainer = document.getElementById('scoreAnswerContainer');
 
 const answerContainer = document.getElementById('answerContainer');
 const videoElement = document.getElementById('videoElement');
@@ -21,37 +25,76 @@ var videoControllerIcon = document.getElementById('videoControllerIcon');
 
 const name = document.getElementById('name');
 var currentQuestion;
+var selectedAnswer;
+var score = 0;
 var index;
 var storage;
 var storageRef;
 
+const correctColor = '#27ae60';
+const wrongColor = '#c0392b';
+
+function setBackground(isCorrect) {
+    var orig = body.style.backgroundColor;
+    body.style.backgroundColor = isCorrect ? correctColor : wrongColor;
+    setTimeout(function() {
+        body.style.backgroundColor = orig;
+    }, 2000);
+}
+
 function displayAnswer() {
+
+    if(setScore()) {
+        gameContent.classList.add('animate__animated', 'animate__tada');
+        correctSound.play();
+        setBackground(true);
+    } else {
+        gameContent.classList.add('animate__animated', 'animate__headShake');
+        wrongSound.play();
+        setBackground(false);
+    }
     questionContainer.style.setProperty('display', 'none', 'important');
     answerContainer.style.removeProperty('display');
-
-    name.innerHTML = currentQuestion.person;
+    photo.setAttribute('src', '');
 
     var sourceNode = document.createElement('SOURCE');
-    storageRef.child('videoMessages/' + currentQuestion.question.filename).getDownloadURL().then(function(url) {
+
+    storageRef.child('videoMessages/' + currentQuestion.video.filename).getDownloadURL().then(function(url) {
         sourceNode.setAttribute('src', url);
+
+        videoElement.setAttribute('onended', 'switchToPlay()');
+        if(currentQuestion.video.orientation === 'landscape') {
+            videoElement.setAttribute('width', '100%');
+            videoElement.removeAttribute('height');
+        } else {
+            videoElement.setAttribute('height', '100%');
+            videoElement.removeAttribute('width');
+        }
+        videoElement.appendChild(sourceNode);
+        videoElement.play();
+        switchToPause();
+
+        name.innerHTML = currentQuestion.person;
     }).catch(function(error) {
         // Handle any errors
     });
+}
 
-    videoElement.setAttribute('onended', 'switchToPlay()');
-    if(currentQuestion.video.orientation === 'landscape') {
-        videoElement.setAttribute('width', '100%');
-        videoElement.removeAttribute('height');
-    } else {
-        videoElement.setAttribute('height', '100%');
-        videoElement.removeAttribute('width');
+function setScore() {
+    if(selectedAnswer === currentQuestion.person) {
+        score += currentQuestion.question.points;
+        displayScore();
+        return true;
     }
-    videoElement.appendChild(sourceNode);
-    videoElement.play();
-    switchToPause();
+
+    return false;
 }
 
 function displayQuestion() {
+    gameContent.classList.remove('animate__animated');
+    gameContent.classList.remove('animate__tada');
+    gameContent.classList.remove('animate__headShake');
+
     if(index == 0) {
         arrowContainers[0].style.visibility = 'hidden';
     } else {
@@ -64,6 +107,7 @@ function displayQuestion() {
         arrowContainers[1].style.visibility = 'hidden';
     }
     
+    photo.setAttribute('src', '');
     videoElement.innerHTML = '';
     switchToPlay();
 
@@ -73,7 +117,13 @@ function displayQuestion() {
     currentQuestion = questions[index];
     questionNumber.innerHTML = index + 1;
 
-    if(currentQuestion.questionType == 'kwento') {
+    localStorage.setItem('questionNumber', index);
+
+    for(var key in currentQuestion.question.choices) {
+        document.getElementById(key).setAttribute('value', currentQuestion.question.choices[key])
+    }
+
+    if(currentQuestion.questionType.type == 'kwento') {
         panelQuestion.style.removeProperty('display');
         panelPhoto.style.setProperty('display', 'none', 'important');
         
@@ -86,6 +136,13 @@ function displayQuestion() {
 
         storageRef.child('images/' + currentQuestion.question.filename).getDownloadURL().then(function(url) {
             photo.setAttribute('src', url);
+            if(currentQuestion.questionType.orientation === 'landscape') {
+                photo.style.setProperty('width', '100%');
+                photo.style.removeProperty('height');
+            } else {
+                photo.style.setProperty('height', '100%');
+                photo.style.removeProperty('width');
+            }
         }).catch(function(error) {
             // Handle any errors
         });
@@ -94,15 +151,39 @@ function displayQuestion() {
     console.log(currentQuestion.question.kwento);
 }
 
+function displayScore() {
+    scoreQuestionContainer.innerHTML = "<i class='fas fa-star'></i> " + score;
+    scoreAnswerContainer.innerHTML = "<i class='fas fa-star'></i> " + score; 
+}
+
+choiceButton.forEach(
+    function(choiceButton) {
+        choiceButton.addEventListener('click', function(choice) {
+            selectedAnswer = choiceButton.value;
+            displayAnswer();
+        });
+
+        choiceButton.addEventListener('mouseover', function(event) {
+            choiceSound.play();
+        });
+    }
+)
+
 startButton.addEventListener('click', (event) => {
+    startSound.play();
     startContainer.style.setProperty('display', 'none', 'important');
     console.log(startContainer);
 
     arrowContainers[0].style.visibility = 'visible';
     arrowContainers[1].style.visibility = 'visible';
     questionContainer.style.removeProperty('display');
+    
+    const storageQuestionNumber = localStorage.getItem('questionNumber');
+    console.log(storageQuestionNumber);
+    index = storageQuestionNumber != null && storageQuestionNumber < questions.length 
+            ? parseInt(localStorage.getItem('questionNumber')) : 0;
 
-    index = 0;
+    displayScore();
     displayQuestion();
 });
 
@@ -145,20 +226,21 @@ arrowRight.addEventListener('click', (event) => {
     }
 });
 
-whoThisButton.addEventListener('click', (event) => {
-    displayAnswer();
-});
-
-iKnowButton.addEventListener('click', (event) => {
-    displayAnswer();
-});
+arrows.forEach(
+    function(arrow) {
+        arrow.addEventListener('click', function(event) {
+            navigateSound.play();
+        });
+    }
+)
 
 function initPart2() {
     loadJSON(function(response) {
         questions = JSON.parse(response.toString());
-
         console.log(questions);
     });
+
+    initSounds();
 
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();

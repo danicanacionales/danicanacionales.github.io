@@ -81,23 +81,19 @@ input[type="text"]:focus {
 }
 
 /* Part 1 */
-section {
-    height: 100vh;
-}
-
 section.intro {
     background-color: #8854d0;
-    height: calc(100vh - 10em);
-
+    height: 100vh;
 }
 
 section.second {
     background-color: #3867d6;
-    height: calc(100vh - 10em);
+    height: 100vh;
 }
 
 section.third {
     background-color: #0fb9b1;
+    height: 100vh;
 }
 
 p {
@@ -152,7 +148,7 @@ button.arrow {
 }
 
 .questionPanel {
-    height: 80%;
+    height: 70%;
     overflow: scroll;
 }
 
@@ -185,6 +181,10 @@ button.arrow {
     border-radius: 30px;
 }
 
+.fa-star {
+    color: #f1c40f;
+}
+
 .gameButton {
     font-weight: bold;
 }
@@ -215,7 +215,6 @@ button.arrow {
     object-fit: contain;
 }
 
-
 @media (max-width: 576px) { 
     .gameCard {
         height: 85%;
@@ -228,7 +227,7 @@ button.arrow {
     }
 
     .questionPanel {
-        height: 65%;
+        height: 45%;
         overflow: scroll;
     }
 

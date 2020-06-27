@@ -7,7 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="styles/main.css">
+    
     <script src="https://kit.fontawesome.com/045c1efce8.js" crossorigin="anonymous"></script>
 
     <title>Hello, world!</title>
@@ -42,10 +44,19 @@
                                     <img id="photo">
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <input type="button" id="whoThisButton" value="Who This?" class="btn-block formButton formButtonPurple gameButton">
+                                    <input type="button" id="choice1" class="btn-block formButton formButtonPurple gameButton choiceButton">
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <input type="button" id="iKnowButton" value="I know who it is!" class="btn-block formButton formButtonGreen gameButton">
+                                    <input type="button" id="choice2" class="btn-block formButton formButtonGreen gameButton choiceButton">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="button" id="choice3" class="btn-block formButton formButtonGreen gameButton choiceButton">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="button" id="choice4" class="btn-block formButton formButtonPurple gameButton choiceButton">
+                                </div>
+                                <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <h3 id="scoreQuestionContainer" class="scoreContainer"><i class="fas fa-star"></i></h6>
                                 </div>
                             </div>
                             <div id="answerContainer" class="col d-flex flex-wrap justify-content-start" style="display:none !important;">
@@ -56,15 +67,12 @@
                                 </div>
                                 <div class="questionPanel col-12 d-flex align-items-center justify-content-center">
                                     <video id="videoElement"></video>
-                                    <!-- <video id="videoElement" style="width:100%">
-                                        <source src="resources/videoMessages/danica.MP4" type="video/mp4">
-                                    </video> -->
-                                    <!-- <video style="height:100%">
-                                        <source src="resources/videoMessages/tim.mov">
-                                    </video> -->
                                 </div>
                                 <div class="col-12 d-flex align-items-center justify-content-center">
                                     <button id="videoController"><i id="videoControllerIcon" class="fas"></i></button>
+                                </div>
+                                <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <h3 id="scoreAnswerContainer" class="scoreContainer"><i class="fas fa-star"></i></h6>
                                 </div>
                             </div>
                         </div>

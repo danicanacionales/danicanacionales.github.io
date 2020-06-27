@@ -9,6 +9,12 @@ const nameButton = document.getElementById('enterNameButton');
 const welcomeTitle = document.getElementById('welcomeTitle');
 const letsGoButton = document.getElementById('letsGoButton');
 
+var choiceSound;
+var navigateSound;
+var startSound;
+var correctSound;
+var wrongSound;
+
 const alert = document.getElementById('alert');
 const password = '302060';
 var name;
@@ -35,6 +41,10 @@ if(gamePinButton != null && nameButton != null) {
             alert.classList.add("incorrect");
         }
     });
+
+    gamePinButton.addEventListener('mouseover', function(event) {
+        choiceSound.play();
+    });
 }
 
 function initPart1() {
@@ -49,4 +59,32 @@ if(letsGoButton != null) {
 
 function isEmptyOrSpaces(str) {
     return !(str.value === null || str.match(/^ *$/) !== null);
+}
+
+function loadIndex() {
+    initSounds();
+}
+
+function sound(src) {
+    this.sound = document.createElement('audio');
+    this.sound.src = src;
+    this.sound.setAttribute('preload', 'auto');
+    this.sound.setAttribute('controls', 'none');
+    this.sound.style.display = 'none';
+    document.body.appendChild(this.sound);
+
+    this.play = function() {
+        this.sound.play();
+    }
+    this.stop = function() {
+        this.sound.pause();
+    }
+}
+
+function initSounds() {
+    choiceSound = new sound('https://felgo.com/web-assets/pop.wav');
+    navigateSound = new sound('resources/audio/next.wav');
+    startSound = new sound('resources/audio/start.wav');
+    correctSound = new sound('resources/audio/correct3.wav');
+    wrongSound = new sound('resources/audio/wrong3.wav');
 }
