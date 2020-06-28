@@ -84,6 +84,27 @@
         }
     },
     {
+        "person": "Kuya Mon",
+        "questionType": {
+            "type": "photo",
+            "orientation": "portrait"
+        },
+        "question": {
+            "filename": "kuya-mon.jpeg",
+            "choices": {
+                "choice1": "Tim",
+                "choice2": "Kuya Mon",
+                "choice3": "JR and Lovely",
+                "choice4": "wala nang ibang choice"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "kuya-mon.mov",
+            "orientation": "landscape"
+        }
+    },
+    {
         "person": "JR and Lovely",
         "questionType": {
             "type": "photo",
