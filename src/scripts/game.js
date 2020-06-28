@@ -27,6 +27,7 @@ const name = document.getElementById('name');
 var currentQuestion;
 var selectedAnswer;
 var score = 0;
+var lastIndex;
 var index;
 var storage;
 var storageRef;
@@ -104,7 +105,7 @@ function displayQuestion() {
     if(index < questions.length - 1) {
         arrowContainers[1].style.visibility = 'visible';
     } else {
-        arrowContainers[1].style.visibility = 'hidden';
+        window.location.href = "part3.html";
     }
     
     photo.setAttribute('src', '');
@@ -181,9 +182,12 @@ startButton.addEventListener('click', (event) => {
     const storageQuestionNumber = localStorage.getItem('questionNumber');
     const storageScore = localStorage.getItem('score');
     console.log(storageQuestionNumber);
-    index = storageQuestionNumber != null && storageQuestionNumber < questions.length 
-            ? parseInt(storageQuestionNumber) : 0;
-    score = storageScore != null ? storageScore : 0;
+    // index = storageQuestionNumber != null && storageQuestionNumber < questions.length 
+    //         ? parseInt(storageQuestionNumber) : 0;
+    // score = storageScore != null ? storageScore : 0;
+
+    index = 0;
+    score = 0;
 
     displayScore();
     displayQuestion();
@@ -236,22 +240,6 @@ arrows.forEach(
     }
 )
 
-function initPart2() {
-    loadJSON(function(response) {
-        questions = JSON.parse(response.toString());
-        console.log(questions);
-        shuffle(questions);
-    });
-
-    initSounds();
-
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-
-    storage = firebase.storage();
-    storageRef = storage.ref();
-}
-
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -267,10 +255,44 @@ function shuffle(array) {
     return array;
 }
 
+function initPart2() {
+    loadJSON(function(response) {
+        questions = JSON.parse(response.toString());
+        console.log(questions);
+        shuffle(questions);
+
+        loadJSON2(function(response) {
+            questions = questions.concat(JSON.parse(response.toString()));
+            console.log(questions);
+        });
+    });
+
+    initSounds();
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    storage = firebase.storage();
+    storageRef = storage.ref();
+}
+
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', 'resources/questions.json', true);
+    xobj.onreadystatechange = function () {
+        if(xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+        }
+    };
+
+    xobj.send(null);
+}
+
+function loadJSON2(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'resources/questions2.json', true);
     xobj.onreadystatechange = function () {
         if(xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);

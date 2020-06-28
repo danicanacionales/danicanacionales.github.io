@@ -48,7 +48,7 @@ if(gamePinButton != null && nameButton != null) {
 }
 
 function initPart1() {
-    welcomeTitle.innerHTML = "Welcome, " + name + "! 😁👋🏼";
+    welcomeTitle.innerHTML = "happy birthday, " + name + "! 🥳🎂🎉";
 }
 
 if(letsGoButton != null) {

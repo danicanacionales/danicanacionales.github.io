@@ -4,7 +4,7 @@
         "person": "Arbie",
         "questionType": {
             "type": "photo",
-            "orientation": "landscape"
+            "orientation": "square"
         },
         "question": {
             "filename": "arbie.JPG",
@@ -19,48 +19,6 @@
         "video": {
             "filename": "arbie.mp4",
             "orientation": "landscape"
-        }
-    },
-    {
-        "person": "Ate Helen and Mogs",
-        "questionType": {
-            "type": "photo",
-            "orientation": "portrait"
-        },
-        "question": {
-            "filename": "ate-helen-mogs.jpeg",
-            "choices": {
-                "choice1": "Tim",
-                "choice2": "JR and Lovely",
-                "choice3": "Ate Helen and Mogs",
-                "choice4": "Pia and Sheannon"
-            },
-            "points": 2000
-        },
-        "video": {
-            "filename": "ate-helen-mogs.mp4",
-            "orientation": "portrait"
-        }
-    },
-    {
-        "person": "Ate Shy",
-        "questionType": {
-            "type": "photo",
-            "orientation": "portrait"
-        },
-        "question": {
-            "filename": "ate-shy.jpeg",
-            "choices": {
-                "choice1": "Ate Star",
-                "choice2": "Van",
-                "choice3": "Ate Shy",
-                "choice4": "Arbie"
-            },
-            "points": 1000
-        },
-        "video": {
-            "filename": "ate-shy.mp4",
-            "orientation": "portrait"
         }
     },
     {
@@ -81,27 +39,6 @@
         },
         "video": {
             "filename": "aubrey.mp4",
-            "orientation": "landscape"
-        }
-    },
-    {
-        "person": "Chelsea",
-        "questionType": {
-            "type": "photo",
-            "orientation": "portrait"
-        },
-        "question": {
-            "filename": "chelsea.jpeg",
-            "choices": {
-                "choice1": "Ate Shy",
-                "choice2": "Chelsea",
-                "choice3": "Jewel",
-                "choice4": "Tim"
-            },
-            "points": 1000
-        },
-        "video": {
-            "filename": "chelsea.mp4",
             "orientation": "landscape"
         }
     },
@@ -228,7 +165,7 @@
         },
         "video": {
             "filename": "japheth.mp4",
-            "orientation": "landscape"
+            "orientation": "square"
         }
     },
     {
@@ -249,48 +186,6 @@
         },
         "video": {
             "filename": "jeneza.mp4",
-            "orientation": "landscape"
-        }
-    },
-    {
-        "person": "Jewel",
-        "questionType": {
-            "type": "photo",
-            "orientation": "landscape"
-        },
-        "question": {
-            "filename": "jewel.jpeg",
-            "choices": {
-                "choice1": "Jewel",
-                "choice2": "Ate Star",
-                "choice3": "Ate Shy",
-                "choice4": "Chelsea"
-            },
-            "points": 1000
-        },
-        "video": {
-            "filename": "jewel.mp4",
-            "orientation": "landscape"
-        }
-    },
-    {
-        "person": "JR and Lovely",
-        "questionType": {
-            "type": "photo",
-            "orientation": "portrait"
-        },
-        "question": {
-            "filename": "jr-lovely.jpeg",
-            "choices": {
-                "choice1": "Tim",
-                "choice2": "Ate Helen and Mogs",
-                "choice3": "JR and Lovely",
-                "choice4": "Pia and Sheannon"
-            },
-            "points": 2000
-        },
-        "video": {
-            "filename": "jr-lovely.mp4",
             "orientation": "landscape"
         }
     },
@@ -379,27 +274,6 @@
         }
     },
     {
-        "person": "Pia and Sheannon",
-        "questionType": {
-            "type": "photo",
-            "orientation": "landscape"
-        },
-        "question": {
-            "filename": "pia-sheannon.jpeg",
-            "choices": {
-                "choice1": "Tim",
-                "choice2": "Ate Helen and Mogs",
-                "choice3": "Pia and Sheannon",
-                "choice4": "JR and Lovely"
-            },
-            "points": 2000
-        },
-        "video": {
-            "filename": "pia-sheannon.mp4",
-            "orientation": "landscape"
-        }
-    },
-    {
         "person": "Riel",
         "questionType": {
             "type": "photo",
@@ -439,27 +313,6 @@
         "video": {
             "filename": "van.mp4",
             "orientation": "landscape"
-        }
-    },
-    {
-        "person": "Ethel",
-        "questionType": {
-            "type": "photo",
-            "orientation": "landscape"
-        },
-        "question": {
-            "filename": "ethel.jpeg",
-            "choices": {
-                "choice1": "Chelsea",
-                "choice2": "Ethel",
-                "choice3": "Chin",
-                "choice4": "Van"
-            },
-            "points": 1000
-        },
-        "video": {
-            "filename": "ethel.mp4",
-            "orientation": "portrait"
         }
     }
 ]
