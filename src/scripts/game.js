@@ -105,7 +105,8 @@ function displayQuestion() {
     if(index < questions.length - 1) {
         arrowContainers[1].style.visibility = 'visible';
     } else {
-        window.location.href = "part3.html";
+        console.log('test');
+        arrowContainers[1].style.visibility = 'hidden';
     }
     
     photo.setAttribute('src', '');

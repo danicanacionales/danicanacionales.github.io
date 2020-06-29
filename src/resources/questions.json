@@ -25,7 +25,7 @@
         "person": "Aubrey",
         "questionType": {
             "type": "photo",
-            "orientation": "portrait"
+            "orientation": "square"
         },
         "question": {
             "filename": "aubrey.jpg",
@@ -88,7 +88,7 @@
         "person": "Diana",
         "questionType": {
             "type": "photo",
-            "orientation": "portrait"
+            "orientation": "square"
         },
         "question": {
             "filename": "diana.jpeg",
@@ -151,7 +151,7 @@
         "person": "Japheth",
         "questionType": {
             "type": "photo",
-            "orientation": "portrait"
+            "orientation": "square"
         },
         "question": {
             "filename": "japheth.jpeg",
@@ -172,7 +172,7 @@
         "person": "Jeneza",
         "questionType": {
             "type": "photo",
-            "orientation": "portrait"
+            "orientation": "square"
         },
         "question": {
             "filename": "jeneza.jpeg",
@@ -277,7 +277,7 @@
         "person": "Riel",
         "questionType": {
             "type": "photo",
-            "orientation": "landscape"
+            "orientation": "square"
         },
         "question": {
             "filename": "riel.JPG",

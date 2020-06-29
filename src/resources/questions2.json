@@ -63,10 +63,115 @@
         }
     },
     {
-        "person": "Chelsea",
+        "person": "Janine",
         "questionType": {
             "type": "photo",
             "orientation": "portrait"
+        },
+        "question": {
+            "filename": "janine.jpeg",
+            "choices": {
+                "choice1": "Janine",
+                "choice2": "Faith",
+                "choice3": "Nikki",
+                "choice4": "Mae"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "janine.mp4",
+            "orientation": "portrait"
+        }
+    },
+    {
+        "person": "Nikki",
+        "questionType": {
+            "type": "photo",
+            "orientation": "portrait"
+        },
+        "question": {
+            "filename": "nikki.jpeg",
+            "choices": {
+                "choice1": "Janine",
+                "choice2": "Faith",
+                "choice3": "Nikki",
+                "choice4": "Mae"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "nikki.mp4",
+            "orientation": "landscape"
+        }
+    },
+    {
+        "person": "Mae",
+        "questionType": {
+            "type": "photo",
+            "orientation": "portrait"
+        },
+        "question": {
+            "filename": "mae.jpeg",
+            "choices": {
+                "choice1": "Janine",
+                "choice2": "Faith",
+                "choice3": "Nikki",
+                "choice4": "Mae"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "mae.mp4",
+            "orientation": "portrait"
+        }
+    },
+    {
+        "person": "Jessica",
+        "questionType": {
+            "type": "photo",
+            "orientation": "square"
+        },
+        "question": {
+            "filename": "jessica.jpeg",
+            "choices": {
+                "choice1": "Nikki",
+                "choice2": "Jessica",
+                "choice3": "Janine",
+                "choice4": "Mae"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "jessica.mp4",
+            "orientation": "portrait"
+        }
+    },
+    {
+        "person": "Faith",
+        "questionType": {
+            "type": "photo",
+            "orientation": "portrait"
+        },
+        "question": {
+            "filename": "faith.jpeg",
+            "choices": {
+                "choice1": "Janine",
+                "choice2": "Faith",
+                "choice3": "Nikki",
+                "choice4": "Jessica"
+            },
+            "points": 1000
+        },
+        "video": {
+            "filename": "faith.mp4",
+            "orientation": "portrait"
+        }
+    },
+    {
+        "person": "Chelsea",
+        "questionType": {
+            "type": "photo",
+            "orientation": "square"
         },
         "question": {
             "filename": "chelsea.jpeg",
@@ -84,6 +189,47 @@
         }
     },
     {
+        "person": "Danica",
+        "questionType": {
+            "type": "photo",
+            "orientation": "landscape"
+        },
+        "question": {
+            "filename": "danica.JPG",
+            "choices": {
+                "choice1": "Jewel",
+                "choice2": "Kim Bryant",
+                "choice3": "Cyma",
+                "choice4": "Danica"
+            },
+            "points": 4000
+        },
+        "video": {
+            "filename": "white.mov",
+            "orientation": "landscape"
+        }
+    },
+    {
+        "person": "Tim",
+        "questionType": {
+            "type": "kwento"
+        },
+        "question": {
+            "kwento": "Good Morning Sunshine..",
+            "choices": {
+                "choice1": "Tim",
+                "choice2": "Kuya Mon",
+                "choice3": "JR and Lovely",
+                "choice4": "wala nang ibang choice"
+            },
+            "points": 4000
+        },
+        "video": {
+            "filename": "white.mov",
+            "orientation": "landscape"
+        }
+    },
+    {
         "person": "Kuya Mon",
         "questionType": {
             "type": "photo",
@@ -97,7 +243,7 @@
                 "choice3": "JR and Lovely",
                 "choice4": "wala nang ibang choice"
             },
-            "points": 1000
+            "points": 1500
         },
         "video": {
             "filename": "kuya-mon.mov",
