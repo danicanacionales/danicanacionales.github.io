@@ -9,7 +9,7 @@
             "filename": "jewel.jpeg",
             "choices": {
                 "choice1": "Jewel",
-                "choice2": "Ate Star",
+                "choice2": "Danica",
                 "choice3": "Ate Shy",
                 "choice4": "Chelsea"
             },
@@ -29,7 +29,7 @@
         "question": {
             "filename": "ate-shy.jpeg",
             "choices": {
-                "choice1": "Ate Star",
+                "choice1": "Danica",
                 "choice2": "Van",
                 "choice3": "Ate Shy",
                 "choice4": "Arbie"

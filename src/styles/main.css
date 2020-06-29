@@ -18,6 +18,10 @@ h1, h2 {
     text-align: center;
 }
 
+#question {
+    color: #000;
+}
+
 input[type="text"] {
     padding: 5px;
     border-radius: 5px;

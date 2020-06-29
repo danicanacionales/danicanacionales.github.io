@@ -5,6 +5,7 @@ const arrowContainers = document.getElementsByClassName('arrowContainer');
 const arrows = document.querySelectorAll('.arrow');
 const arrowLeft = document.getElementById('arrowLeft');
 const arrowRight = document.getElementById('arrowRight');
+const arrowEnd = document.getElementById('arrowEnd');
 
 const gameContent = document.getElementById('gameContent');
 const questionContainer = document.getElementById('questionContainer');
@@ -106,7 +107,8 @@ function displayQuestion() {
         arrowContainers[1].style.visibility = 'visible';
     } else {
         console.log('test');
-        arrowContainers[1].style.visibility = 'hidden';
+        arrowRight.style.visibility = 'hidden';
+        arrowEnd.style.visibility = 'visible';
     }
     
     photo.setAttribute('src', '');
@@ -231,6 +233,10 @@ arrowRight.addEventListener('click', (event) => {
         index++;
         displayQuestion();
     }
+});
+
+arrowEnd.addEventListener('click', (event) => {
+    window.location.href = "part3.html";
 });
 
 arrows.forEach(
