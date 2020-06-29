@@ -251,6 +251,27 @@
         }
     },
     {
+        "person": "Ate Star",
+        "questionType": {
+            "type": "photo",
+            "orientation": "portrait"
+        },
+        "question": {
+            "filename": "ate-star.jpeg",
+            "choices": {
+                "choice1": "obvious naman e",
+                "choice2": "sino pa ba",
+                "choice3": "edi",
+                "choice4": "Ate Star"
+            },
+            "points": 1500
+        },
+        "video": {
+            "filename": "ate-star.mp4",
+            "orientation": "landscape"
+        }
+    },
+    {
         "person": "JR and Lovely",
         "questionType": {
             "type": "photo",
